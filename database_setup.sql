@@ -1,4 +1,4 @@
--- Movies Gallery Database Setup
+-- database setup
 -- Run this in phpMyAdmin or MySQL CLI
 
 CREATE DATABASE IF NOT EXISTS movies_gallery;
