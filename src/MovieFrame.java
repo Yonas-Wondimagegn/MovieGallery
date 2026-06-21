@@ -6,12 +6,12 @@ import java.util.*;
 
 public class MovieFrame extends JFrame {
 
-    // Form fields
+    // form fields
     private JTextField movieCodeField, titleField, lengthField, actorsField;
     private JTextField fullContentField, highlight1Field, highlight2Field;
     private JComboBox<String> typeCombo, producerCombo, categoryCombo;
 
-    // Table
+    // table
     private JTable table;
     private DefaultTableModel tableModel;
     private java.util.List<Integer> producerIDs  = new ArrayList<>();
@@ -32,15 +32,13 @@ public class MovieFrame extends JFrame {
         loadMovies();
     }
 
-    // ══════════════════════════════════════════════════
-    //  TAB 1 – Admin panel: form on top, table below
-    // ══════════════════════════════════════════════════
+    //  TAB 1 Admin panel...form top table below
     private JPanel buildAdminPanel() {
         JPanel main = new JPanel(new BorderLayout(10, 10));
         main.setBackground(new Color(30, 30, 30));
         main.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
-        // ── Form (vertical, line by line) ──
+        // ── form (vertical)
         JPanel form = new JPanel();
         form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
         form.setBackground(new Color(30, 30, 30));
@@ -81,7 +79,7 @@ public class MovieFrame extends JFrame {
         form.add(Box.createVerticalStrut(10));
         form.add(addBtn);
 
-        // ── Table ──
+        //table
         tableModel = new DefaultTableModel(
             new String[]{"ID","Code","Title","Type","Length","Actors","Producer","Category"}, 0) {
             public boolean isCellEditable(int r, int c) { return false; }
@@ -91,7 +89,7 @@ public class MovieFrame extends JFrame {
         JScrollPane scroll = new JScrollPane(table);
         scroll.setPreferredSize(new Dimension(0, 200));
 
-        // ── Bottom buttons ──
+        //bottom buttons
         JPanel bottom = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
         bottom.setBackground(new Color(30, 30, 30));
 
@@ -110,16 +108,13 @@ public class MovieFrame extends JFrame {
         main.add(bottom, BorderLayout.SOUTH);
         return main;
     }
-
-    // ══════════════════════════════════════════════════
-    //  TAB 2 – Member gallery: read-only poster tiles
-    // ══════════════════════════════════════════════════
+    //  TAB 2 – member gallery
     private JPanel buildGalleryPanel() {
         JPanel wrapper = new JPanel(new BorderLayout(8, 8));
         wrapper.setBackground(new Color(20, 20, 20));
         wrapper.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Member selector
+        // member selector
         JPanel topBar = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 5));
         topBar.setBackground(new Color(20, 20, 20));
 
@@ -139,7 +134,7 @@ public class MovieFrame extends JFrame {
 
         wrapper.add(topBar, BorderLayout.NORTH);
 
-        // Tile area
+        // tile area
         JPanel tilesPanel = new JPanel(new WrapLayout(FlowLayout.LEFT, 12, 12));
         tilesPanel.setBackground(new Color(20, 20, 20));
         JScrollPane scroll = new JScrollPane(tilesPanel);
@@ -147,7 +142,7 @@ public class MovieFrame extends JFrame {
         scroll.setBorder(null);
         wrapper.add(scroll, BorderLayout.CENTER);
 
-        // Load members into combo on first show
+        // load members
         loadMembersIntoCombo(memberCombo, memberIDs);
 
         loadBtn.addActionListener(e -> {
@@ -178,7 +173,7 @@ public class MovieFrame extends JFrame {
     private void buildTiles(JPanel tilesPanel, int memberID, JScrollPane scroll) {
         tilesPanel.removeAll();
 
-        // Get member info
+        // get member info
         boolean subscribed = false; String memberName = "";
         try {
             Connection conn = DBConnection.getConnection();
@@ -193,13 +188,13 @@ public class MovieFrame extends JFrame {
         final boolean isSub   = subscribed;
         final String  memName = memberName;
 
-        // Status label
+        // status label
         JLabel statusLbl = new JLabel("  " + memName + " — " + (isSub ? "Subscribed" : "Not Subscribed"));
         statusLbl.setForeground(isSub ? new Color(80, 200, 80) : new Color(220, 100, 100));
         statusLbl.setFont(new Font("Arial", Font.BOLD, 13));
         tilesPanel.add(statusLbl);
 
-        // Filler to push tiles to next row
+        // filler to push tiles to next row
         for (int i = 0; i < 20; i++) {
             JLabel spacer = new JLabel();
             spacer.setPreferredSize(new Dimension(0, 0));
