@@ -1,6 +1,6 @@
 public class Movie {
     private int movieID;
-    private String movieCode; // e.g. M001
+    private String movieCode;
     private String title;
     private String type;
     private float lengthHours;
