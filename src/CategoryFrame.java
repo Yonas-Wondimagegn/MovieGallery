@@ -81,7 +81,7 @@ public class CategoryFrame extends JFrame {
 
     private void addCategory() {
         String name = nameField.getText().trim();
-        if (name.isEmpty()) { JOptionPane.showMessageDialog(this, "Please enter a category name."); return; }
+        if (name.isEmpty()) { JOptionPane.showMessageDialog(this, "Please enter a category name"); return; }
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Category (categoryName) VALUES (?)");
