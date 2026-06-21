@@ -38,7 +38,7 @@ public class MovieFrame extends JFrame {
         main.setBackground(new Color(30, 30, 30));
         main.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
 
-        // ── form (vertical)
+        // ── form
         JPanel form = new JPanel();
         form.setLayout(new BoxLayout(form, BoxLayout.Y_AXIS));
         form.setBackground(new Color(30, 30, 30));
@@ -108,7 +108,7 @@ public class MovieFrame extends JFrame {
         main.add(bottom, BorderLayout.SOUTH);
         return main;
     }
-    //  TAB 2 – member gallery
+    //  TAB 2 member gallery
     private JPanel buildGalleryPanel() {
         JPanel wrapper = new JPanel(new BorderLayout(8, 8));
         wrapper.setBackground(new Color(20, 20, 20));
@@ -201,7 +201,7 @@ public class MovieFrame extends JFrame {
             tilesPanel.add(spacer);
         }
 
-        // Load movies with content
+        // load movies with content
         try {
             Connection conn = DBConnection.getConnection();
             ResultSet rs = conn.createStatement().executeQuery(
@@ -241,7 +241,7 @@ public class MovieFrame extends JFrame {
         card.setBorder(BorderFactory.createLineBorder(new Color(65, 65, 65)));
         card.setPreferredSize(new Dimension(200, 290));
 
-        // Poster
+        // poster
         JLabel poster = new JLabel("", SwingConstants.CENTER);
         poster.setPreferredSize(new Dimension(200, 195));
         poster.setOpaque(true);
@@ -257,7 +257,7 @@ public class MovieFrame extends JFrame {
         }
         card.add(poster, BorderLayout.CENTER);
 
-        // Info + buttons
+        // info + buttons
         JPanel bottom = new JPanel();
         bottom.setLayout(new BoxLayout(bottom, BoxLayout.Y_AXIS));
         bottom.setBackground(new Color(40, 40, 40));
@@ -405,9 +405,7 @@ public class MovieFrame extends JFrame {
         dlg.setVisible(true);
     }
 
-    // ══════════════════════════════════════════════════
     //  DB helpers
-    // ══════════════════════════════════════════════════
     private void loadProducers() {
         producerCombo.removeAllItems(); producerIDs.clear();
         try {
@@ -540,10 +538,7 @@ public class MovieFrame extends JFrame {
         } catch (SQLException e) { JOptionPane.showMessageDialog(this, "Error: " + e.getMessage()); }
     }
 
-    // ══════════════════════════════════════════════════
-    //  Style helpers
-    // ══════════════════════════════════════════════════
-    /** Adds a label + text field as one vertical row and returns the field. */
+    //  style helpers
     private JTextField addRow(JPanel panel, String labelText) {
         JLabel lbl = new JLabel(labelText);
         lbl.setForeground(Color.LIGHT_GRAY);
