@@ -122,7 +122,7 @@ public class MemberFrame extends JFrame {
         if (row == -1) { JOptionPane.showMessageDialog(this, "Select a row first."); return; }
         int id = (int) tableModel.getValueAt(row, 0);
         String current = (String) tableModel.getValueAt(row, 3);
-        boolean nowSubscribed = current.equals("No"); // toggle
+        boolean nowSubscribed = current.equals("No");
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(
