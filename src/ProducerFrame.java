@@ -90,7 +90,7 @@ public class ProducerFrame extends JFrame {
         String name  = nameField.getText().trim();
         String phone = phoneField.getText().trim();
         if (name.isEmpty() || phone.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields."); return;
+            JOptionPane.showMessageDialog(this, "please fill all fields"); return;
         }
         try {
             Connection conn = DBConnection.getConnection();
@@ -108,7 +108,7 @@ public class ProducerFrame extends JFrame {
 
     private void deleteProducer() {
         int row = table.getSelectedRow();
-        if (row == -1) { JOptionPane.showMessageDialog(this, "Select a row first."); return; }
+        if (row == -1) { JOptionPane.showMessageDialog(this, "Select a row first"); return; }
         int id = (int) tableModel.getValueAt(row, 0);
         try {
             Connection conn = DBConnection.getConnection();
